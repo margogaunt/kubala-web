@@ -33,18 +33,20 @@ Písmo **Ubuntu** (Google Fonts, 400/500/700, latin-ext), záloha `system-ui, sa
 - **Vedlejší tlačítko:** průhledné, rámeček `--line`. Hover: rámeček `--muted`. Focus stejný jako výše.
 - **Panel:** `--surface`, rámeček 1 px `--line`, rádius 8 px.
 - **Služby:** seznam s ikonou a linkou, ne karty.
-- **Galerie:** velká fotka a 4 náhledy (tlačítka). Aktivní náhled má oranžový rámeček.
+- **Fotka světlometu:** `svetlomet.jpg` (uživatel má svolení k použití) zrcadlově vpravo v pozadí úvodu, asi 62 % šířky. Ztrácí se do všech stran, vlevo úplně mizí před textem, ani vpravo není plná (asi 55 %). Lehký oranžový filtr 14 %. Kvůli malému rozlišení (690 px) je jemně rozostřená (1,2 px) s neviditelnou zrnitostí. Při dodání větší verze rozostření odebrat.
+- **Výkres auta:** vlastní SVG výkres je nahrazený fotkou, zůstává jako `NAVRH KLIPART.png`. Obrázek z Pinterestu je cizí ilustrace, lze ho nahradit jen souborem s doloženým svolením autora.
+- **Koláž:** malá, 4 pole dole mezi kontaktem a mapou, fotky oprav se po jedné prolínají. Při najetí myší se zastaví, klik fotku zvětší v okně.
 - **Stav otevřeno/zavřeno:** tečka a text podle času v Praze. Bez JS se nezobrazí.
 - **Disabled:** web žádné neaktivní ovládací prvky nemá.
 
 ## 5. Rozvržení
-Maximální šířka 1400 px, okraj 24 px, mezery 12 px. Na desktopu 2 sloupce (7:5) a pod nimi 3 panely (recenze, kontakt, mapa). Cíl: při 1280×800 se vše vejde na jednu obrazovku.
+Maximální šířka 1400 px, okraj 24 px, mezery 12 px. Na desktopu 2 sloupce (7:5): přes celou šířku panel s úvodem a službami vlevo a výkresem vpravo. Pod ním recenze, kontakt, malá koláž a mapa. Cíl: při 1280×800 se vše vejde na jednu obrazovku.
 
 ## 6. Hloubka
 Žádné stíny. Hloubku dělá jen rozdíl `--bg` a `--surface` a linky.
 
 ## 7. Animace
-Úroveň **L1**. Jen hover 150 ms a prolnutí fotky v galerii 200 ms. `prefers-reduced-motion` je vypíná.
+Úroveň **L1**. Jen hover 150 ms a prolnutí jedné fotky v koláži (0,8 s, jednou za 4 s). `prefers-reduced-motion` střídání i přechody vypíná.
 
 ## 8. Co dělat a co ne
 **Dělat**
@@ -63,6 +65,8 @@ Maximální šířka 1400 px, okraj 24 px, mezery 12 px. Na desktopu 2 sloupce (
 6. Dlouhé scrollování a podstránky.
 7. Rozmazané fotky (Kia).
 8. Černo-červený „závodní“ vzhled.
+9. Vzhled inzerátu: velká fotka auta jako hlavní prvek stránky.
+10. Náhradní vozidlo, dokud ho nepotvrdí majitel (jediný zdroj je starý profil na Firmy.cz).
 
 ## 9. Responzivita
 Zlomy 960 / 760 / 480 px. Pod 960 px jeden sloupec. Pod 760 px pevná spodní lišta „Zavolat“ a „Navigovat“. Dotykové plochy aspoň 44 px, žádný vodorovný scroll.

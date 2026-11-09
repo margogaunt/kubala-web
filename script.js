@@ -47,29 +47,80 @@
     li.classList.toggle('is-today', match);
   });
 
-  // Galerie: prolnutí fotky po kliknutí na náhled
-  var img = document.getElementById('g-img');
-  var cap = document.getElementById('g-cap');
-  var thumbs = document.querySelectorAll('.thumb');
-  if (img && cap && thumbs.length) {
-    thumbs.forEach(function (t) {
-      t.addEventListener('click', function () {
-        if (t.classList.contains('is-active')) return;
-        thumbs.forEach(function (o) {
-          o.classList.toggle('is-active', o === t);
-          o.setAttribute('aria-pressed', o === t ? 'true' : 'false');
+  // Koláž: fotky se po jedné prolínají, klik fotku zvětší
+  var PHOTOS = [
+    { src: 'kubala-02-bmw-x3-2-0.jpg', cap: 'BMW X3: motor a převodovka mimo auto', pos: '50% 45%' },
+    { src: 'kubala-05-skoda-octavia-3.jpg', cap: 'Škoda Octavia III: tlumiče a pružiny', pos: '50% 75%' },
+    { src: 'kubala-07-skoda-fabia-i.jpg', cap: 'Škoda Fabia I: brzdy a výfuk', pos: '50% 70%' },
+    { src: 'kubala-10-ssangyong-korando-1-5tgdi.jpg', cap: 'SsangYong Korando: olej a filtr', pos: '50% 75%' },
+    { src: 'kubala-06-audi-a5-b8.jpg', cap: 'Audi A5: rozvody a vyměněné díly', pos: '50% 75%' },
+    { src: 'kubala-11-audi-q5.jpg', cap: 'Audi Q5: rozvody, baterie a filtry', pos: '50% 80%' },
+    { src: 'kubala-12-skoda-superb-iii.jpg', cap: 'Škoda Superb III: ventilátor topení', pos: '50% 60%' },
+    { src: 'kubala-13-peugeot-boxer.jpg', cap: 'Peugeot Boxer: čelní sklo', pos: '50% 50%' },
+    { src: 'kubala-04-toyota-prius.jpg', cap: 'Toyota Prius v dílně', pos: '50% 50%' },
+    { src: 'kubala-03-jeep-willys.jpg', cap: 'Malý Jeep Willys na zvedáku', pos: '50% 35%' }
+  ];
+  var collage = document.getElementById('collage');
+  var tiles = collage ? Array.prototype.slice.call(collage.querySelectorAll('.tile')) : [];
+  var viewer = document.getElementById('viewer');
+  var vImg = document.getElementById('viewer-img');
+  var vCap = document.getElementById('viewer-cap');
+  var vClose = document.getElementById('viewer-close');
+
+  if (collage && tiles.length) {
+    var paused = false;
+    var nextPhoto = tiles.length;
+    var nextTile = 0;
+
+    function swap(tile, idx) {
+      var p = PHOTOS[idx];
+      var loader = new Image();
+      loader.onload = function () {
+        var old = tile.querySelector('img');
+        var img = document.createElement('img');
+        img.src = p.src;
+        img.alt = '';
+        img.style.objectPosition = p.pos;
+        img.className = 'is-new';
+        old.after(img);
+        tile.setAttribute('data-i', idx);
+        tile.setAttribute('aria-label', 'Zvětšit fotku: ' + p.cap.replace(':', ','));
+        tile.querySelector('.tile__cap').textContent = p.cap;
+        img.getBoundingClientRect();
+        img.classList.remove('is-new');
+        setTimeout(function () { old.remove(); }, 850);
+      };
+      loader.src = p.src;
+    }
+
+    function tick() {
+      if (paused || document.hidden || (viewer && viewer.open)) return;
+      swap(tiles[nextTile], nextPhoto);
+      nextPhoto = (nextPhoto + 1) % PHOTOS.length;
+      nextTile = (nextTile + 1) % tiles.length;
+    }
+
+    collage.addEventListener('mouseenter', function () { paused = true; });
+    collage.addEventListener('mouseleave', function () { paused = false; });
+    collage.addEventListener('focusin', function () { paused = true; });
+    collage.addEventListener('focusout', function () { paused = false; });
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(tick, 4000);
+    }
+
+    if (viewer && vImg && vCap && viewer.showModal) {
+      tiles.forEach(function (t) {
+        t.addEventListener('click', function () {
+          var p = PHOTOS[parseInt(t.getAttribute('data-i'), 10)];
+          vImg.src = p.src;
+          vImg.alt = p.cap;
+          vCap.textContent = p.cap;
+          viewer.showModal();
         });
-        img.classList.add('is-fading');
-        setTimeout(function () {
-          var show = function () { img.classList.remove('is-fading'); img.onload = null; };
-          img.onload = show;
-          img.src = t.getAttribute('data-src');
-          img.alt = t.getAttribute('data-alt');
-          img.style.objectPosition = t.getAttribute('data-pos');
-          cap.textContent = t.getAttribute('data-cap');
-          if (img.complete) show();
-        }, 200);
       });
-    });
+      if (vClose) vClose.addEventListener('click', function () { viewer.close(); });
+      viewer.addEventListener('click', function (e) { if (e.target === viewer) viewer.close(); });
+    }
   }
 })();

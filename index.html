@@ -63,42 +63,46 @@
 
 <main class="wrap layout" id="top">
 
-  <section class="hero panel">
-    <p class="eyebrow">Autoservis Ostrava-Vítkovice</p>
-    <h1>Opravy a&nbsp;servis osobních aut. Stačí zavolat.</h1>
-    <p class="lead">Od výměny oleje po&nbsp;STK. Na&nbsp;dobu opravy lze domluvit náhradní vozidlo.</p>
-    <div class="hero__cta">
-      <a class="btn btn--main" href="tel:+420608851262"><svg class="ico"><use href="#i-phone"/></svg>Zavolat 608&nbsp;851&nbsp;262</a>
-      <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=49.8150525,18.262415" target="_blank" rel="noopener"><svg class="ico"><use href="#i-nav"/></svg>Navigovat</a>
-    </div>
+  <div class="stage panel">
+    <div class="strip" aria-hidden="true"><img src="svetlomet.jpg" alt="" width="690" height="457"></div>
+
+    <section class="hero">
+      <p class="eyebrow">Autoservis Ostrava-Vítkovice</p>
+      <h1>Opravy a&nbsp;servis osobních aut. Stačí zavolat.</h1>
+      <p class="lead">Od&nbsp;výměny oleje po&nbsp;převodovku a&nbsp;přípravu na&nbsp;STK.</p>
+      <div class="hero__cta">
+        <a class="btn btn--main" href="tel:+420608851262"><svg class="ico"><use href="#i-phone"/></svg>Zavolat 608&nbsp;851&nbsp;262</a>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=49.8150525,18.262415" target="_blank" rel="noopener"><svg class="ico"><use href="#i-nav"/></svg>Navigovat</a>
+      </div>
+    </section>
+
+    <section class="services" aria-labelledby="h-sluzby">
+      <h2 class="label" id="h-sluzby">Služby</h2>
+      <ul class="svc">
+        <li><svg class="ico"><use href="#i-wrench"/></svg>Opravy a servis aut</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Příprava a provedení STK</li>
+        <li><svg class="ico"><use href="#i-snow"/></svg>Plnění a čištění klimatizace</li>
+        <li><svg class="ico"><use href="#i-target"/></svg>Geometrie</li>
+        <li><svg class="ico"><use href="#i-car"/></svg>Karosářské práce</li>
+        <li><svg class="ico"><use href="#i-oil"/></svg>Výměna oleje, i&nbsp;v&nbsp;DSG</li>
+        <li><svg class="ico"><use href="#i-gear"/></svg>Oprava automatické převodovky</li>
+        <li><svg class="ico"><use href="#i-box"/></svg>Prodej náhradních dílů</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="collage" id="collage" aria-label="Fotky oprav z dílny, po kliknutí se zvětší">
+    <button class="tile tile--a" type="button" data-i="0" aria-label="Zvětšit fotku: BMW X3, motor a převodovka mimo auto"><img src="kubala-02-bmw-x3-2-0.jpg" alt="" style="object-position:50% 45%"><span class="tile__cap">BMW X3: motor a převodovka mimo auto</span></button>
+    <button class="tile tile--b" type="button" data-i="1" aria-label="Zvětšit fotku: Škoda Octavia III, tlumiče a pružiny"><img src="kubala-05-skoda-octavia-3.jpg" alt="" style="object-position:50% 75%"><span class="tile__cap">Škoda Octavia III: tlumiče a pružiny</span></button>
+    <button class="tile tile--c" type="button" data-i="2" aria-label="Zvětšit fotku: Škoda Fabia I, brzdy a výfuk"><img src="kubala-07-skoda-fabia-i.jpg" alt="" style="object-position:50% 70%"><span class="tile__cap">Škoda Fabia I: brzdy a výfuk</span></button>
+    <button class="tile tile--d" type="button" data-i="3" aria-label="Zvětšit fotku: SsangYong Korando, olej a filtr"><img src="kubala-10-ssangyong-korando-1-5tgdi.jpg" alt="" style="object-position:50% 75%"><span class="tile__cap">SsangYong Korando: olej a filtr</span></button>
   </section>
 
-  <section class="gallery" aria-label="Fotky z dílny">
-    <figure class="gallery__main">
-      <img id="g-img" src="kubala-10-ssangyong-korando-1-5tgdi.jpg" alt="SsangYong Korando na zvedáku v dílně, před ním oleje a filtr" style="object-position:50% 85%">
-      <figcaption id="g-cap">SsangYong Korando: olej a&nbsp;filtr</figcaption>
-    </figure>
-    <div class="gallery__thumbs">
-      <button class="thumb is-active" type="button" aria-pressed="true" data-src="kubala-10-ssangyong-korando-1-5tgdi.jpg" data-pos="50% 85%" data-cap="SsangYong Korando: olej a filtr" data-alt="SsangYong Korando na zvedáku v dílně, před ním oleje a filtr"><img src="kubala-10-ssangyong-korando-1-5tgdi.jpg" alt=""><span class="sr">SsangYong Korando</span></button>
-      <button class="thumb" type="button" aria-pressed="false" data-src="kubala-05-skoda-octavia-3.jpg" data-pos="50% 62%" data-cap="Škoda Octavia III: tlumiče a pružiny" data-alt="Škoda Octavia v dílně, před ní vyměněné tlumiče a pružiny"><img src="kubala-05-skoda-octavia-3.jpg" alt=""><span class="sr">Škoda Octavia III</span></button>
-      <button class="thumb" type="button" aria-pressed="false" data-src="kubala-02-bmw-x3-2-0.jpg" data-pos="50% 40%" data-cap="BMW X3: motor a převodovka mimo auto" data-alt="BMW X3 na zvedáku, pod ním vyjmutý motor s převodovkou na paletě"><img src="kubala-02-bmw-x3-2-0.jpg" alt=""><span class="sr">BMW X3</span></button>
-      <button class="thumb" type="button" aria-pressed="false" data-src="kubala-07-skoda-fabia-i.jpg" data-pos="50% 62%" data-cap="Škoda Fabia I: brzdy a výfuk" data-alt="Škoda Fabia v dílně, před ní vyměněné brzdy a výfuk"><img src="kubala-07-skoda-fabia-i.jpg" alt=""><span class="sr">Škoda Fabia I</span></button>
-    </div>
-  </section>
-
-  <section class="services panel" aria-labelledby="h-sluzby">
-    <h2 class="label" id="h-sluzby">Služby</h2>
-    <ul class="svc">
-      <li><svg class="ico"><use href="#i-wrench"/></svg>Opravy a servis aut</li>
-      <li><svg class="ico"><use href="#i-check"/></svg>Příprava a provedení STK</li>
-      <li><svg class="ico"><use href="#i-snow"/></svg>Plnění a čištění klimatizace</li>
-      <li><svg class="ico"><use href="#i-target"/></svg>Geometrie</li>
-      <li><svg class="ico"><use href="#i-car"/></svg>Karosářské práce</li>
-      <li><svg class="ico"><use href="#i-oil"/></svg>Výměna oleje, i&nbsp;v&nbsp;DSG</li>
-      <li><svg class="ico"><use href="#i-gear"/></svg>Oprava automatické převodovky</li>
-      <li><svg class="ico"><use href="#i-box"/></svg>Prodej náhradních dílů</li>
-    </ul>
-  </section>
+  <dialog class="viewer" id="viewer" aria-label="Zvětšená fotka">
+    <button class="viewer__close" type="button" id="viewer-close" aria-label="Zavřít">×</button>
+    <img id="viewer-img" src="logo.jpg" alt="">
+    <p id="viewer-cap"></p>
+  </dialog>
 
   <section class="reviews panel" aria-labelledby="h-recenze">
     <h2 class="label" id="h-recenze">Co říkají zákazníci</h2>
